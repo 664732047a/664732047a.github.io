@@ -4,43 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        h1 {
-            text-align: center;
-        }
-
-        a {
-            text-decoration: none;
-            color: skyblue;
-            font-size: 20px;
-            font-weight: 700;
-        }
-    </style>
+    <title>滑屏案例</title>
+    <link rel="stylesheet/less" href="css/index.less">
+    <script src="js/less.min.js"></script>
+    <script>
+        ~function () {
+            let evt = 'onrientationchange' in window ? 'onrientationchange' : 'resize';
+            function computed() {
+                let HTML = document.documentElement,
+                    deviceW = HTML.clientWidth,
+                    designW = 750,
+                    ratio = deviceW / designW * 100;
+                if (deviceW >= designW) {
+                    ratio = 100;
+                }
+                HTML.style.fontSize = ratio + 'px';
+            }
+            computed();
+            window.addEventListener(evt, computed);
+        }()
+    </script>
 </head>
 
 <body>
-    <a href="./wangyifan.docx">王一凡的简历</a>
-    <h1>前端知识</h1>
-    <a href="./前端知识/axios/尚硅谷_axios从入门到源码分析.pdf">axios</a>
-    <a href="./前端知识/es6/尚硅谷前端_ES6.pdf">es6</a>
-    <a href="./前端知识/promise/尚硅谷前端技术之Promise.md">promise</a>
-    <a href="./前端知识/vue/Vue.pdf">Vue</a>
-    <h1>NodeJS</h1>
-    <ul>
-        <li><a href="./前端知识/nodejs/01_Buffer.pdf">Buffer</a></li>
-        <li><a href="./前端知识/nodejs/02_fs模块.pdf">fs模块</a></li>
-        <li><a href="./前端知识/nodejs/03_path模块.pdf">path模块</a></li>
-        <li><a href="./前端知识/nodejs/04_HTTP协议.pdf">HTTP协议</a></li>
-        <li><a href="./前端知识/nodejs/05_NodeJS模块化.pdf">NodeJS模块化</a></li>
-        <li><a href="./前端知识/nodejs/06_包管理工具.pdf">包管理工具</a></li>
-        <li><a href="./前端知识/nodejs/07_nvm.pdf">nvm</a></li>
-        <li><a href="./前端知识/nodejs/08_express框架.pdf">express框架</a></li>
-        <li><a href="./前端知识/nodejs/09_mongodb.pdf">mongodb</a></li>
-        <li><a href="./前端知识/nodejs/10_接口.pdf">接口</a></li>
-        <li><a href="./前端知识/nodejs/11_会话控制.pdf">会话控制</a></li>
-
-    </ul>
+    <main class="container">
+        <!-- 魔方区域 -->
+        <section class="cubeBox">
+            <ul class="cube">
+                <li><img src="images/zf_cube1.png" alt=""></li>
+                <li><img src="images/zf_cube2.png" alt=""></li>
+                <li><img src="images/zf_cube3.png" alt=""></li>
+                <li><img src="images/zf_cube4.png" alt=""></li>
+                <li><img src="images/zf_cube5.png" alt=""></li>
+                <li><img src="images/zf_cube6.png" alt=""></li>
+            </ul>
+            <span class="tip"></span>
+        </section>
+        <!-- 滑屏区域 -->
+        <section class="swiperBox">
+            <a href="javascript:;" class="returnBox"></a>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide page1">
+                        <div class="baseInfo">
+                            <dt>自我介绍</dt>
+                            <dd><em>01</em>
+                                <p>姓名：周啸天</p>
+                            </dd>
+                            <dd><em>02</em>
+                                <p>性别：你猜</p>
+                            </dd>
+                            <dd><em>03</em>
+                                <p>年龄：OLD MAN</p>
+                            </dd>
+                            <dd><em>04</em>
+                                <p>户籍：河北省承德市</p>
+                            </dd>
+                            <dd><em>05</em>
+                                <p>工作年限：10 年</p>
+                            </dd>
+                            <dd><em>06</em>
+                                <p>学历：家里蹲大学-博士后</p>
+                            </dd>
+                            <dd><em>07</em>
+                                <p>户籍：河北承德</p>
+                            </dd>
+                            <dd><em>08</em>
+                                <p>电话：110114119120</p>
+                            </dd>
+                            <dd><em>09</em>
+                                <p>兴趣：读书、敲代码</p>
+                            </dd>
+                            <dd><em>10</em>
+                                <p>擅长：JavaScript（ES6）、AJAX、VUE、REACT、NODE、小程序、职业规划</p>
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="swiper-slide page2">
+                        <h3>课程体系</h3>
+                        <img src="images/zf_course1.png" alt="">
+                        <img src="images/zf_course2.png" alt="">
+                        <img src="images/zf_course3.png" alt="">
+                        <img src="images/zf_course4.png" alt="">
+                        <img src="images/zf_course5.png" alt="">
+                        <img src="images/zf_course6.png" alt="">
+                        <img src="images/zf_course.png" alt="">
+                    </div>
+                    <div class="swiper-slide page3">
+                        <img src="images/zf_teacherTip.png" id="page3" alt="" class="title">
+                    </div>
+                    <div class="swiper-slide page4">Slide 4</div>
+                    <div class="swiper-slide page5">Slide 5</div>
+                    <div class="swiper-slide page6">Slide 6</div>
+                </div>
+            </div>
+        </section>
+        <!-- 音乐区域 -->
+        <section class="musicBox">
+            <audio class="musicAudio" src="audio/music.mp3" loop preload="none"></audio>
+            <a href="javascript:;" class="musicIcon move"></a>
+        </section>
+    </main>
+    <script src="js/zepto.min2.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/makisu.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
